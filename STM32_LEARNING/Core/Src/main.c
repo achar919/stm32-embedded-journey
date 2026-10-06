@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -45,7 +45,8 @@
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
+GPIO_PinState lastbutton = GPIO_PIN_SET;
+uint32_t pressCount = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -58,7 +59,11 @@ static void MX_USART2_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+int __io_putchar(int ch)
+{
+    HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
+    return ch;
+}
 /* USER CODE END 0 */
 
 /**
@@ -92,7 +97,8 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  setvbuf(stdout, NULL, _IONBF, 0);
+printf("ready press the blue button in the board \r\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -103,14 +109,29 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  if (HAL_GPIO_ReadPin(BUTTON_GPIO_Port, BUTTON_Pin) == GPIO_PIN_RESET)
+	  GPIO_PinState nowButton = HAL_GPIO_ReadPin(BUTTON_GPIO_Port, BUTTON_Pin);
+
+	  if (lastbutton == GPIO_PIN_SET && nowButton == GPIO_PIN_RESET)
 	  {
-	      HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);    // LED ON
+	      HAL_Delay(20);
+
+	      if (HAL_GPIO_ReadPin(BUTTON_GPIO_Port, BUTTON_Pin) == GPIO_PIN_RESET)
+	      {
+	          HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin);
+	          pressCount++;
+
+	          if (HAL_GPIO_ReadPin(LED_GREEN_GPIO_Port, LED_GREEN_Pin) == GPIO_PIN_SET)
+	          {
+	              printf("Press %lu: LED ON\r\n", pressCount);
+	          }
+	          else
+	          {
+	              printf("Press %lu: LED OFF\r\n", pressCount);
+	          }
+	      }
 	  }
-	  else
-	  {
-	      HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET);  // LED OFF
-	  }
+
+	  lastbutton = nowButton;
   }
   /* USER CODE END 3 */
 }

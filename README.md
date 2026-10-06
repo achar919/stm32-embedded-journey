@@ -42,8 +42,8 @@ Each folder is a complete, buildable STM32CubeIDE project with its own README co
 | # | Project | Concepts | Status |
 |---|---|---|---|
 | 01 | [Button → LED](STM32_LEARNING/) | GPIO input/output, active-low logic, CubeMX basics | ✅ Done |
-| 02 | Button interrupt | EXTI, NVIC, callbacks | 🔄 In progress |
-| 03 | Hello UART | USART, `printf` redirection, serial monitor | ⏳ Planned |
+| 02 | [Smart button + UART logging](STM32_LEARNING/LESSON_02_SMART_BUTTON.md) | Edge detection, debouncing, `printf` over UART | ✅ Done |
+| 03 | Button interrupt | EXTI, NVIC, callbacks, non-blocking timing | 🔄 In progress |
 | 04 | Timer blink | Hardware timers, non-blocking code | ⏳ Planned |
 | 05 | LED fade & servo | PWM | ⏳ Planned |
 | 06 | Potentiometer reader | ADC | ⏳ Planned |
