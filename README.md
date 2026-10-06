@@ -74,4 +74,4 @@ stm32-embedded-journey/
 
 ## Connect
 
-Following along or have feedback? Reach me on **[LinkedIn](www.linkedin.com/in/vishwasachar1128)**.
+Following along or have feedback? Reach me on **[LinkedIn] (www.linkedin.com/in/vishwasachar1128)**.
