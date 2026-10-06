@@ -3,7 +3,7 @@
 > Press the blue user button and the green LED turns on. Release it and the LED turns off.
 
 <p align="center">
-  <img src="../docs/media/01-button-led.gif" alt="Demo" width="420">
+https://github.com/user-attachments/assets/ffaec951-93c4-4a4f-add5-d47df7bab43e
 </p>
 
 ## Goal
