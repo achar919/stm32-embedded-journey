@@ -45,7 +45,7 @@
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-GPIO_PinState lastbutton = GPIO_PIN_SET;
+volatile uint8_t buttonPressed = 0;
 uint32_t pressCount = 0;
 /* USER CODE END PV */
 
@@ -59,11 +59,25 @@ static void MX_USART2_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+/* USER CODE BEGIN 0 */
 int __io_putchar(int ch)
 {
     HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
     return ch;
 }
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+    static uint32_t lastPressTime = 0;
+    uint32_t now = HAL_GetTick();
+
+    if (GPIO_Pin == BUTTON_Pin && (now - lastPressTime) > 200)
+    {
+        buttonPressed = 1;
+        lastPressTime = now;
+    }
+}
+/* USER CODE END 0 */
 /* USER CODE END 0 */
 
 /**
@@ -109,29 +123,13 @@ printf("ready press the blue button in the board \r\n");
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  GPIO_PinState nowButton = HAL_GPIO_ReadPin(BUTTON_GPIO_Port, BUTTON_Pin);
-
-	  if (lastbutton == GPIO_PIN_SET && nowButton == GPIO_PIN_RESET)
+	  if (buttonPressed)
 	  {
-	      HAL_Delay(20);
-
-	      if (HAL_GPIO_ReadPin(BUTTON_GPIO_Port, BUTTON_Pin) == GPIO_PIN_RESET)
-	      {
-	          HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin);
-	          pressCount++;
-
-	          if (HAL_GPIO_ReadPin(LED_GREEN_GPIO_Port, LED_GREEN_Pin) == GPIO_PIN_SET)
-	          {
-	              printf("Press %lu: LED ON\r\n", pressCount);
-	          }
-	          else
-	          {
-	              printf("Press %lu: LED OFF\r\n", pressCount);
-	          }
-	      }
+	      buttonPressed = 0;
+	      HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin);
+	      pressCount++;
+	      printf("[%lu ms] Press %lu\r\n", HAL_GetTick(), pressCount);
 	  }
-
-	  lastbutton = nowButton;
   }
   /* USER CODE END 3 */
 }
@@ -249,6 +247,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LED_GREEN_GPIO_Port, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
