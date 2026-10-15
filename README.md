@@ -47,7 +47,7 @@ Each folder is a complete, buildable STM32CubeIDE project with its own README co
 | 04 | [Hardware timer blink](04_timer_blink/) | TIM6, prescaler, auto-reload, timer interrupt | ✅ Done |
 | 05 | [PWM LED fade](05_pwm_fade/) | PWM, duty cycle, TIM2 CH1 | ✅ Done |
 | 06 | [Potentiometer reader](06_adc_pot/) | ADC, averaging, for loop, if/else | ✅ Done |
-| 07 | Sensor + OLED | I2C | ⏳ Planned |
+| 07 | [I2C OLED display](07_i2c_oled/) | I2C, scanning, SH1106 driver, frame buffer | ✅ Done |
 | 08 | Register-level blink | RCC, GPIO registers, no HAL | ⏳ Planned |
 | 09 | Multi-task system | FreeRTOS | ⏳ Planned |
 | 10 | Ethernet sensor dashboard | NUCLEO-H563ZI, networking | ⏳ Planned |
