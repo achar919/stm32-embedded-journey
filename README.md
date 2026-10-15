@@ -41,29 +41,30 @@ Each folder is a complete, buildable STM32CubeIDE project with its own README co
 
 | # | Project | Concepts | Status |
 |---|---|---|---|
-| 01 | [Button → LED](STM32_LEARNING/) | GPIO input/output, active-low logic, CubeMX basics | ✅ Done |
-| 02 | [Smart button + UART logging](STM32_LEARNING/LESSON_02_SMART_BUTTON.md) | Edge detection, debouncing, `printf` over UART | ✅ Done |
-| 03 | Button interrupt | EXTI, NVIC, callbacks, non-blocking timing | 🔄 In progress |
-| 04 | Timer blink | Hardware timers, non-blocking code | ⏳ Planned |
-| 05 | LED fade & servo | PWM | ⏳ Planned |
+| 01 | [Button → LED](01_button_led/) | GPIO input/output, active-low logic, CubeMX basics | ✅ Done |
+| 02 | [Smart button + UART logging](02_smart_button_uart/) | Edge detection, debouncing, `printf` over UART | ✅ Done |
+| 03 | [Button interrupt](03_button_interrupt/) | EXTI, NVIC, callbacks, `volatile` | ✅ Done |
+| 04 | [Hardware timer blink](04_timer_blink/) | TIM6, prescaler, auto-reload, timer interrupt | ✅ Done |
+| 05 | [PWM LED fade](05_pwm_fade/) | PWM, duty cycle, TIM2 CH1 | 🔄 In progress |
 | 06 | Potentiometer reader | ADC | ⏳ Planned |
 | 07 | Sensor + OLED | I2C | ⏳ Planned |
 | 08 | Register-level blink | RCC, GPIO registers, no HAL | ⏳ Planned |
 | 09 | Multi-task system | FreeRTOS | ⏳ Planned |
 | 10 | Ethernet sensor dashboard | NUCLEO-H563ZI, networking | ⏳ Planned |
-
 ## Repository structure
 
 ```
 stm32-embedded-journey/
-├── README.md              ← you are here
-├── docs/media/            ← demo GIFs and screenshots
-├── STM32_LEARNING/         ← each lesson is a full CubeIDE project
-│   ├── Core/              ← application code (main.c lives here)
-│   ├── Drivers/           ← ST HAL and CMSIS
-│   ├── STM32_LEARNING.ioc  ← CubeMX configuration
-│   └── README.md          ← lesson write-up
-└── 02_button_interrupt/
+├── README.md
+├── 01_button_led/          ← each lesson is its own CubeIDE project
+│   ├── Core/               ← main.c lives here
+│   ├── Drivers/
+│   ├── 01_button_led.ioc
+│   └── README.md           ← lesson write-up
+├── 02_smart_button_uart/
+├── 03_button_interrupt/
+├── 04_timer_blink/
+└── 05_pwm_fade/
 ```
 
 ## Build any project
