@@ -45,8 +45,8 @@ Each folder is a complete, buildable STM32CubeIDE project with its own README co
 | 02 | [Smart button + UART logging](02_smart_button_uart/) | Edge detection, debouncing, `printf` over UART | ✅ Done |
 | 03 | [Button interrupt](03_button_interrupt/) | EXTI, NVIC, callbacks, `volatile` | ✅ Done |
 | 04 | [Hardware timer blink](04_timer_blink/) | TIM6, prescaler, auto-reload, timer interrupt | ✅ Done |
-| 05 | [PWM LED fade](05_pwm_fade/) | PWM, duty cycle, TIM2 CH1 | 🔄 In progress |
-| 06 | Potentiometer reader | ADC | ⏳ Planned |
+| 05 | [PWM LED fade](05_pwm_fade/) | PWM, duty cycle, TIM2 CH1 | ✅ Done |
+| 06 | [Potentiometer reader](06_adc_pot/) | ADC, averaging, for loop, if/else | ✅ Done |
 | 07 | Sensor + OLED | I2C | ⏳ Planned |
 | 08 | Register-level blink | RCC, GPIO registers, no HAL | ⏳ Planned |
 | 09 | Multi-task system | FreeRTOS | ⏳ Planned |
