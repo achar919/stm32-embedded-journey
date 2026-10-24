@@ -64,7 +64,11 @@ stm32-embedded-journey/
 ├── 02_smart_button_uart/
 ├── 03_button_interrupt/
 ├── 04_timer_blink/
-└── 05_pwm_fade/
+├── 05_pwm_fade/
+├── 06_adc_pot/
+├── 07_i2c_oled/
+├── 08_register_gpio/
+└── 09_freertos/
 ```
 
 ## Build any project
