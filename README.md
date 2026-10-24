@@ -49,7 +49,7 @@ Each folder is a complete, buildable STM32CubeIDE project with its own README co
 | 06 | [Potentiometer reader](06_adc_pot/) | ADC, averaging, `for` loop, if/else | ✅ Done |
 | 07 | [I2C OLED display](07_i2c_oled/) | I2C, bus scanning, SH1106 driver, frame buffer | ✅ Done |
 | 08 | [Register-level GPIO](08_register_gpio/) | RCC, MODER, IDR, BSRR, bit operations, pointers | ✅ Done |
-| 09 | Multi-task system | FreeRTOS | ⏳ Planned |
+| 09 | [FreeRTOS multi-task system](09_freertos/) | Tasks, scheduler, `osDelay`, priorities, stacks | ✅ Done |
 | 10 | Ethernet sensor dashboard | NUCLEO-H563ZI, networking | ⏳ Planned |
 ## Repository structure
 
