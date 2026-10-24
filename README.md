@@ -70,7 +70,9 @@ stm32-embedded-journey/
 ├── 06_adc_pot/
 ├── 07_i2c_oled/
 ├── 08_register_gpio/
-└── 09_freertos/
+├── 09_freertos/
+├── 10_h563_traffic_light/
+└── 11_ethernet_udp_echo/
 ```
 
 ## Build any project
