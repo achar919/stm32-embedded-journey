@@ -50,7 +50,9 @@ Each folder is a complete, buildable STM32CubeIDE project with its own README co
 | 07 | [I2C OLED display](07_i2c_oled/) | I2C, bus scanning, SH1106 driver, frame buffer | ✅ Done |
 | 08 | [Register-level GPIO](08_register_gpio/) | RCC, MODER, IDR, BSRR, bit operations, pointers | ✅ Done |
 | 09 | [FreeRTOS multi-task system](09_freertos/) | Tasks, scheduler, `osDelay`, priorities, stacks | ✅ Done |
-| 10 | Ethernet sensor dashboard | NUCLEO-H563ZI, networking | ⏳ Planned |
+| 10 | [H563ZI traffic light](10_h563_traffic_light/) | New board, state machine, `enum`, `switch` | ✅ Done |
+| 11 | [Ethernet UDP echo](11_ethernet_udp_echo/) | Ethernet, IP, DHCP, ping, UDP, ThreadX + NetX Duo | ✅ Done |
+| 12 | Network-controlled LEDs | UDP commands, text parsing, IoT protocol | 🔄 In progress |
 ## Repository structure
 
 ```
